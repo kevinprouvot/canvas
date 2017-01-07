@@ -87,10 +87,14 @@ public class CommandInterpreter {
 	}
 
 	private Command instantiateCommand(Command command) {
-		if (!command.instantiate()) {
+		if (command.validate()) {
+			command.instantiate();
+		} else {
 			command = new InvalidCommand(command.getCommandLine());
 		}
+
 		return command;
+
 	}
 
 	// TEST METHODS

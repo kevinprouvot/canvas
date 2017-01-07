@@ -12,7 +12,11 @@ public class Command {
 	 * Try to instantiate the command given the command
 	 * @return instantiation status
 	 */
-	public boolean instantiate() {
+	public void instantiate() {
+		
+	}
+	
+	public boolean validate() {
 		return false;
 	}
 	

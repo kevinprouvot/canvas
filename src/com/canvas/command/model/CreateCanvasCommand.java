@@ -4,12 +4,15 @@ public class CreateCanvasCommand extends Command {
 
 	public CreateCanvasCommand(String commandLine) {
 		super(commandLine);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public boolean instantiate() {
-		// TODO Auto-generated method stub
+	public void instantiate() {
+		
+	}
+	
+	@Override
+	public boolean validate() {
 		return false;
 	}
 
