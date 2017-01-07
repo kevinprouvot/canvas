@@ -39,7 +39,7 @@ public class CommandInterpreter {
 
 	protected Command interpretCommand() {
 		String commandLine = prepareCommandLine(inputLine);
-		Command command = createICommand(commandLine);
+		Command command = createCommand(commandLine);
 		command = instantiateCommand(command);
 		return command;
 	}
@@ -57,7 +57,7 @@ public class CommandInterpreter {
 		return inputLine.trim();
 	}
 
-	private Command createICommand(String commandLine) {
+	private Command createCommand(String commandLine) {
 		Command command;
 
 		String firstLetter = commandLine.substring(0, 1);
