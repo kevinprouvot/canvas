@@ -12,11 +12,11 @@ import com.canvas.command.model.InvalidCommand;
 import com.canvas.command.model.QuitCommand;
 
 /**
- * Command interpretor will deduce what command to create depending on the
+ * Command interpreter will deduce what command to create depending on the
  * syntax
  * 
  */
-public class CommandInterpretor {
+public class CommandInterpreter {
 
 	private BufferedReader input;
 	private String inputLine;
@@ -27,7 +27,7 @@ public class CommandInterpretor {
 	protected static final String BUCKET_FILL_COMMAND = "B";
 	protected static final String QUIT_COMMAND = "Q";
 
-	public CommandInterpretor(BufferedReader bufferedReader) {
+	public CommandInterpreter(BufferedReader bufferedReader) {
 		this.input = bufferedReader;
 	}
 

@@ -14,15 +14,15 @@ import com.canvas.command.model.Command;
 import com.canvas.command.model.InvalidCommand;
 import com.canvas.command.model.QuitCommand;
 
-public class CommandInterpretorTest {
+public class CommandInterpreterTest {
 
-	private CommandInterpretor commandInterpretor;
+	private CommandInterpreter commandInterpreter;
 	private String inputText;
 	private Command currentComand;
 
 	@Before
 	public void setUp() throws Exception {
-		commandInterpretor = new CommandInterpretor(null);
+		commandInterpreter = new CommandInterpreter(null);
 		// TODO create a valid/invalid command generator
 	}
 
@@ -35,14 +35,14 @@ public class CommandInterpretorTest {
 	@Test
 	public void testCreateCanvasInput() {
 		inputText = "C 4 5";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateCanvasCommand);
 
 		inputText = " C 4   5";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateCanvasCommand);
 	}
@@ -50,8 +50,8 @@ public class CommandInterpretorTest {
 	@Test
 	public void testCreateLineInput() {
 		inputText = "L 1 0 1 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateLineCommand);
 	}
@@ -59,8 +59,8 @@ public class CommandInterpretorTest {
 	@Test
 	public void testCreateRectangleInput() {
 		inputText = "R 0 0 2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateRectangleCommand);
 	}
@@ -68,8 +68,8 @@ public class CommandInterpretorTest {
 	@Test
 	public void testBucketFillInput() {
 		inputText = "B 1 1 o";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof BucketFillCommand);
 	}
@@ -77,8 +77,8 @@ public class CommandInterpretorTest {
 	@Test
 	public void testQuitInput() {
 		inputText = "Q";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof QuitCommand);
 	}
@@ -88,8 +88,8 @@ public class CommandInterpretorTest {
 	@Test
 	public void testInvalidFirstLetterInput() {
 		inputText = "Z";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
@@ -97,32 +97,32 @@ public class CommandInterpretorTest {
 	@Test
 	public void testInvalidCanvasParameter() {
 		inputText = "C";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "C 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "C 2 4 3";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "C A 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "C2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
@@ -130,32 +130,32 @@ public class CommandInterpretorTest {
 	@Test
 	public void testInvalidLineParameter() {
 		inputText = "L";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "L 2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "L 2 2 2 4 3";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "L A 2 2 2 ";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "L2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
@@ -163,32 +163,32 @@ public class CommandInterpretorTest {
 	@Test
 	public void testInvalidRectangleParameter() {
 		inputText = "R";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "R 2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "R 2 2 2 4 3";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "R A 2 2 2 ";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "R2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
@@ -196,32 +196,32 @@ public class CommandInterpretorTest {
 	@Test
 	public void testInvalidBucketFillParameter() {
 		inputText = "B";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "B 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "B 2 2 2 4 3";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "B A 2 ";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 
 		inputText = "B2 2";
-		commandInterpretor.setInputLine(inputText);
-		currentComand = commandInterpretor.interpretCommand();
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
