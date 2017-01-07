@@ -8,8 +8,16 @@ public class Command {
 		this.commandLine = commandLine;
 	}
 	
-	public boolean validate() {
+	/**
+	 * Try to instantiate the command given the command
+	 * @return instantiation status
+	 */
+	public boolean instantiate() {
 		return false;
+	}
+	
+	public String getCommandLine() {
+		return commandLine;
 	}
 
 }

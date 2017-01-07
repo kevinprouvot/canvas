@@ -8,7 +8,7 @@ public class CreateLineCommand extends Command {
 	}
 
 	@Override
-	public boolean validate() {
+	public boolean instantiate() {
 		// TODO Auto-generated method stub
 		return false;
 	}
