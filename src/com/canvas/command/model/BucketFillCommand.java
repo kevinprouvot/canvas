@@ -1,5 +1,7 @@
 package com.canvas.command.model;
 
+import com.canvas.command.CommandUtils;
+
 public class BucketFillCommand extends Command {
 
 	public BucketFillCommand(String commandLine) {
@@ -13,7 +15,7 @@ public class BucketFillCommand extends Command {
 	
 	@Override
 	public boolean validate() {
-		return false;
+		return CommandUtils.getInstance().validateSizeAndType(this);
 	}
 
 }

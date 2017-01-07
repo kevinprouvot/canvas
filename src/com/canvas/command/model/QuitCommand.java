@@ -15,7 +15,7 @@ public class QuitCommand extends Command {
 	
 	@Override
 	public boolean validate() {
-		return CommandUtils.getInstance().validationInstructionSize(this);
+		return CommandUtils.getInstance().validateSizeAndType(this);
 	}
 
 }
