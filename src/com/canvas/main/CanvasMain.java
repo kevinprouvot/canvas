@@ -25,7 +25,7 @@ public class CanvasMain {
 		ICommand command = commandInterpretor.interpret();
 		
 		while (!(command instanceof QuitCommand)) {
-			Queue<IShape> shapes = shapeController.queueNewShapes(command);
+			Queue<IShape> shapes = shapeController.queueNewShape(command);
 			
 			drawingFactory.draw(shapes);
 			

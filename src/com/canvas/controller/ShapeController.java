@@ -12,7 +12,7 @@ import com.canvas.controller.shape.IShape;
  */
 public class ShapeController {
 
-	public Queue<IShape> queueNewShapes(ICommand command) {
+	public Queue<IShape> queueNewShape(ICommand command) {
 		return null;
 	}
 }
