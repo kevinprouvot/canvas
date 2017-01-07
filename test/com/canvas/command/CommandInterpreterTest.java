@@ -45,11 +45,23 @@ public class CommandInterpreterTest {
 		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateCanvasCommand);
+		
+		inputText = "C 12 5";
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
+
+		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateCanvasCommand);
 	}
 
 	@Test
 	public void testCreateLineInput() {
 		inputText = "L 1 0 1 2";
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
+
+		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateLineCommand);
+		
+		inputText = "L 12 0 12 2";
 		commandInterpreter.setInputLine(inputText);
 		currentComand = commandInterpreter.interpretCommand();
 
@@ -63,11 +75,23 @@ public class CommandInterpreterTest {
 		currentComand = commandInterpreter.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateRectangleCommand);
+		
+		inputText = "R 10 0 2 2";
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
+
+		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateRectangleCommand);
 	}
 
 	@Test
 	public void testBucketFillInput() {
 		inputText = "B 1 1 o";
+		commandInterpreter.setInputLine(inputText);
+		currentComand = commandInterpreter.interpretCommand();
+
+		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof BucketFillCommand);
+		
+		inputText = "B 10 1 o";
 		commandInterpreter.setInputLine(inputText);
 		currentComand = commandInterpreter.interpretCommand();
 
