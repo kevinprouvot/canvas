@@ -64,22 +64,22 @@ public class CommandInterpretor {
 
 		switch (firstLetter) {
 		case (CANVAS_COMMAND):
-			command = new CreateCanvasCommand();
+			command = new CreateCanvasCommand(commandLine);
 			break;
 		case (LINE_COMMAND):
-			command = new CreateLineCommand();
+			command = new CreateLineCommand(commandLine);
 			break;
 		case (RECTANGE_COMMAND):
-			command = new CreateRectangleCommand();
+			command = new CreateRectangleCommand(commandLine);
 			break;
 		case (BUCKET_FILL_COMMAND):
-			command = new BucketFillCommand();
+			command = new BucketFillCommand(commandLine);
 			break;
 		case (QUIT_COMMAND):
-			command = new QuitCommand();
+			command = new QuitCommand(commandLine);
 			break;
 		default:
-			command = new InvalidCommand();
+			command = new InvalidCommand(commandLine);
 			break;
 		}
 
