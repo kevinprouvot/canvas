@@ -4,7 +4,7 @@ public class CommandUtils {
 	
 	private static CommandUtils instance;
 	
-	public CommandUtils getInstance() {
+	public static CommandUtils getInstance() {
 		if (instance == null) {
 			instance = new CommandUtils();
 		}
