@@ -90,6 +90,7 @@ public class CommandInterpreter {
 		if (command.validate()) {
 			command.instantiate();
 		} else {
+			// TODO Add error message for invalid commands
 			command = new InvalidCommand(command.getCommandLine());
 		}
 

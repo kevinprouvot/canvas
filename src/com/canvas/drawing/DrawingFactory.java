@@ -20,4 +20,8 @@ public class DrawingFactory {
 	public void draw(Queue<IShape> shapes) {
 
 	}
+	
+	public void displayErrorMessage(String message) {
+		
+	}
 }

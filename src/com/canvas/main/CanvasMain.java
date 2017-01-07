@@ -6,6 +6,7 @@ import java.util.Queue;
 
 import com.canvas.command.CommandInterpreter;
 import com.canvas.command.model.Command;
+import com.canvas.command.model.InvalidCommand;
 import com.canvas.command.model.QuitCommand;
 import com.canvas.controller.ShapeController;
 import com.canvas.controller.shape.IShape;
@@ -25,13 +26,24 @@ public class CanvasMain {
 		ShapeController shapeController = new ShapeController();
 		DrawingFactory drawingFactory = new DrawingFactory(System.out);
 
+		// First Command interpretation
 		Command command = commandInterpreter.interpret();
 
+		// Main loop
 		while (!(command instanceof QuitCommand)) {
-			Queue<IShape> shapes = shapeController.queueNewShape(command);
+			
+			// If the command is invalid, display error message
+			if (command instanceof InvalidCommand) {
+				InvalidCommand invalidCommand = (InvalidCommand)command;
+				drawingFactory.displayErrorMessage(invalidCommand.getMessage());
+			}
+			else {
+				Queue<IShape> shapes = shapeController.queueNewShape(command);
+	
+				drawingFactory.draw(shapes);
+			}
 
-			drawingFactory.draw(shapes);
-
+			// Interpret next command
 			command = commandInterpreter.interpret();
 		}
 
