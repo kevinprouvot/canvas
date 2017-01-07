@@ -19,7 +19,6 @@ import com.canvas.command.model.QuitCommand;
 public class CommandInterpreter {
 
 	private BufferedReader input;
-	private String inputLine;
 
 	protected static final String CANVAS_COMMAND = "C";
 	protected static final String LINE_COMMAND = "L";
@@ -32,12 +31,11 @@ public class CommandInterpreter {
 	}
 
 	public Command interpret() {
-		// TODO Create a separate class for the reader
-		inputLine = readInput();
-		return interpretCommand();
+		String inputLine = readInput();
+		return interpretCommand(inputLine);
 	}
 
-	protected Command interpretCommand() {
+	protected Command interpretCommand(String inputLine) {
 		String commandLine = prepareCommandLine(inputLine);
 		Command command = createCommand(commandLine);
 		command = instantiateCommand(command);
@@ -96,11 +94,5 @@ public class CommandInterpreter {
 
 		return command;
 
-	}
-
-	// TEST METHODS
-
-	protected void setInputLine(String line) {
-		this.inputLine = line;
 	}
 }
