@@ -3,19 +3,17 @@ package com.canvas.command.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvalidCommand extends Command {
+public class InvalidCommand implements Command {
 	
 	private List<String> messages;
 
-	public InvalidCommand(String commandLine, String message) {
-		super(commandLine);
+	public InvalidCommand(String message) {
 		
 		this.messages = new ArrayList<>();
 		this.messages.add(message);
 	}
 	
-	public InvalidCommand(String commandLine, List<String> messages) {
-		super(commandLine);
+	public InvalidCommand(List<String> messages) {
 		this.messages = messages;
 	}
 	

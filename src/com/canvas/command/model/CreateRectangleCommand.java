@@ -1,6 +1,6 @@
 package com.canvas.command.model;
 
-public class CreateRectangleCommand extends Command {
+public class CreateRectangleCommand implements Command {
 
 	private int x1;
 	private int y1;
@@ -8,7 +8,6 @@ public class CreateRectangleCommand extends Command {
 	private int y2;
 	
 	public CreateRectangleCommand(String commandLine) {
-		super(commandLine);
 		
 		String[] instruction = commandLine.split(" ");
 

@@ -1,8 +1,7 @@
 package com.canvas.command.model;
 
-public class QuitCommand extends Command {
+public class QuitCommand implements Command {
 
-	public QuitCommand(String commandLine) {
-		super(commandLine);
+	public QuitCommand() {
 	}
 }

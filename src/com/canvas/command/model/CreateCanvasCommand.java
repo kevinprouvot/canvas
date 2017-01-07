@@ -1,12 +1,11 @@
 package com.canvas.command.model;
 
-public class CreateCanvasCommand extends Command {
+public class CreateCanvasCommand implements Command {
 
 	private int w;
 	private int h;
 
 	public CreateCanvasCommand(String commandLine) {
-		super(commandLine);
 
 		String[] instruction = commandLine.split(" ");
 

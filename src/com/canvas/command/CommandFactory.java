@@ -56,7 +56,7 @@ public class CommandFactory {
 			if (command instanceof CreateLineCommand) {
 				CreateLineCommand lineCommand = (CreateLineCommand) command;
 				if (!CreateLineCommand.validateVerticalHorizontalLine(lineCommand)) {
-					command = new InvalidCommand(commandLine, "Application only support vertical or horizontal lines");
+					command = new InvalidCommand("Application only support vertical or horizontal lines");
 				}
 			}
 			break;
@@ -70,7 +70,7 @@ public class CommandFactory {
 			command = createQuitCommand(commandLine);
 			break;
 		default:
-			command = new InvalidCommand(commandLine, "Invalid First Characater");
+			command = new InvalidCommand("Invalid First Characater");
 			break;
 		}
 
@@ -85,15 +85,15 @@ public class CommandFactory {
 				return shapeClass.getConstructor(String.class).newInstance(commandLine);
 			} catch (IllegalAccessException | NoSuchMethodException | InstantiationException
 					| InvocationTargetException e) {
-				return new InvalidCommand(commandLine, "Unexpected error");
+				return new InvalidCommand("Unexpected error");
 			}
 		} else {
-			return new InvalidCommand(commandLine, "Invalid Pararmeters");
+			return new InvalidCommand("Invalid Pararmeters");
 		}
 
 	}
 
 	private Command createQuitCommand(String commandLine) {
-		return new QuitCommand(commandLine);
+		return new QuitCommand();
 	}
 }

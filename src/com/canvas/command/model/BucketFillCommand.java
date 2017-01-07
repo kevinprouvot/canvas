@@ -1,13 +1,12 @@
 package com.canvas.command.model;
 
-public class BucketFillCommand extends Command {
+public class BucketFillCommand implements Command {
 
 	private int x;
 	private int y;
 	private char color;
 
 	public BucketFillCommand(String commandLine) {
-		super(commandLine);
 		String[] instruction = commandLine.split(" ");
 
 		this.x = Integer.valueOf(instruction[1]);

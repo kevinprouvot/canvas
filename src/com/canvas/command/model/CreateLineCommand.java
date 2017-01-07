@@ -1,6 +1,6 @@
 package com.canvas.command.model;
 
-public class CreateLineCommand extends Command {
+public class CreateLineCommand implements Command {
 
 	private int x1;
 	private int y1;
@@ -8,7 +8,6 @@ public class CreateLineCommand extends Command {
 	private int y2;
 	
 	public CreateLineCommand(String commandLine) {
-		super(commandLine);
 		
 		String[] instruction = commandLine.split(" ");
 
