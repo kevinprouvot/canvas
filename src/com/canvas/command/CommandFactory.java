@@ -1,6 +1,8 @@
 package com.canvas.command;
 
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.canvas.command.model.BucketFillCommand;
 import com.canvas.command.model.Command;
@@ -26,19 +28,19 @@ public class CommandFactory {
 	}
 
 	protected static final String CANVAS_COMMAND = "C";
-	protected static final int CANVAS_EXPECTED_ARGS = 3;
+	protected static final String CANVAS_REGEX = "^C \\d+ \\d+$";
 
 	protected static final String LINE_COMMAND = "L";
-	protected static final int LINE_EXPECTED_ARGS = 5;
+	protected static final String LINE_REGEX = "^L \\d+ \\d+ \\d+ \\d+$";
 
 	protected static final String RECTANGLE_COMMAND = "R";
-	protected static final int RECTANGLE_EXPECTED_ARGS = 5;
+	protected static final String RECTANGLE_REGEX = "^R \\d+ \\d+ \\d+ \\d+$";
 
 	protected static final String BUCKET_FILL_COMMAND = "B";
-	protected static final int BUCKET_FILL_EXPECTED_ARGS = 3;
+	protected static final String BUCKET_FILL_REGEX = "^B \\d+ \\d+ \\w+$";
 
 	protected static final String QUIT_COMMAND = "Q";
-	protected static final int QUIT_EXPECTED_ARGS = 1;
+	protected static final String QUIT_REGEX = "^Q$";
 
 	public Command createCommand(String commandLine) {
 		Command command;
@@ -47,16 +49,16 @@ public class CommandFactory {
 
 		switch (firstLetter) {
 		case (CANVAS_COMMAND):
-			command = createCanvasCommand(commandLine);
+			command = createShapeCommand(commandLine, CANVAS_REGEX, CreateCanvasCommand.class);
 			break;
 		case (LINE_COMMAND):
-			command = createLineCommand(commandLine);
+			command = createShapeCommand(commandLine, LINE_REGEX, CreateLineCommand.class);
 			break;
 		case (RECTANGLE_COMMAND):
-			command = createRectangleCommand(commandLine);
+			command = createShapeCommand(commandLine, RECTANGLE_REGEX, CreateRectangleCommand.class);
 			break;
 		case (BUCKET_FILL_COMMAND):
-			command = createBucketFillCommand(commandLine);
+			command = createShapeCommand(commandLine, BUCKET_FILL_REGEX, BucketFillCommand.class);
 			break;
 		case (QUIT_COMMAND):
 			command = createQuitCommand(commandLine);
@@ -69,58 +71,23 @@ public class CommandFactory {
 		return command;
 	}
 
-	private Command createCanvasCommand(String commandLine) {
-		List<String> errorMessages = CommandValidator.getInstance().validateSizeAndType(commandLine,
-				CANVAS_EXPECTED_ARGS);
-		;
-		if (errorMessages.size() > 0) {
-			return new InvalidCommand(commandLine, errorMessages);
+	private Command createShapeCommand(String commandLine, String pattern, Class<? extends Command> shapeClass) {
+		Pattern p = Pattern.compile(pattern);
+		Matcher m = p.matcher(commandLine);
+		if (m.matches()) {
+			try {
+				return shapeClass.getConstructor(String.class).newInstance(commandLine);
+			} catch (IllegalAccessException | NoSuchMethodException | InstantiationException
+					| InvocationTargetException e) {
+				return new InvalidCommand(commandLine, "Unexpected error");
+			}
 		} else {
-			return new CreateCanvasCommand(commandLine);
+			return new InvalidCommand(commandLine, "Invalid Pararmeters");
 		}
-	}
 
-	private Command createLineCommand(String commandLine) {
-		List<String> errorMessages = CommandValidator.getInstance().validateSizeAndType(commandLine,
-				LINE_EXPECTED_ARGS);
-		;
-		if (errorMessages.size() > 0) {
-			return new InvalidCommand(commandLine, errorMessages);
-		} else {
-			return new CreateLineCommand(commandLine);
-		}
-	}
-
-	private Command createRectangleCommand(String commandLine) {
-		List<String> errorMessages = CommandValidator.getInstance().validateSizeAndType(commandLine,
-				RECTANGLE_EXPECTED_ARGS);
-		;
-		if (errorMessages.size() > 0) {
-			return new InvalidCommand(commandLine, errorMessages);
-		} else {
-			return new CreateRectangleCommand(commandLine);
-		}
-	}
-
-	private Command createBucketFillCommand(String commandLine) {
-		List<String> errorMessages = CommandValidator.getInstance().validateSizeAndType(commandLine,
-				BUCKET_FILL_EXPECTED_ARGS);
-		;
-		if (errorMessages.size() > 0) {
-			return new InvalidCommand(commandLine, errorMessages);
-		} else {
-			return new BucketFillCommand(commandLine);
-		}
 	}
 
 	private Command createQuitCommand(String commandLine) {
-		List<String> errorMessages = CommandValidator.getInstance().validateSizeAndType(commandLine,
-				QUIT_EXPECTED_ARGS);
-		;
-		if (errorMessages.size() > 0) {
-			return new InvalidCommand(commandLine, errorMessages);
-		} else {
-			return new QuitCommand(commandLine);
-		}
+		return new QuitCommand(commandLine);
 	}
 }
