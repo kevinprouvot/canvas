@@ -23,6 +23,7 @@ public class CommandInterpretorTest {
 	@Before
 	public void setUp() throws Exception {
 		commandInterpretor = new CommandInterpretor(null);
+		// TODO create a valid/invalid command generator
 	}
 
 	@After
@@ -38,7 +39,7 @@ public class CommandInterpretorTest {
 		currentComand = commandInterpretor.interpretCommand();
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof CreateCanvasCommand);
-		
+
 		inputText = " C 4   5";
 		commandInterpretor.setInputLine(inputText);
 		currentComand = commandInterpretor.interpretCommand();
@@ -125,7 +126,7 @@ public class CommandInterpretorTest {
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
-	
+
 	@Test
 	public void testInvalidLineParameter() {
 		inputText = "L";
@@ -158,7 +159,7 @@ public class CommandInterpretorTest {
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
-	
+
 	@Test
 	public void testInvalidRectangleParameter() {
 		inputText = "R";
@@ -191,7 +192,7 @@ public class CommandInterpretorTest {
 
 		assertTrue("Wrong command created. Text: " + inputText, currentComand instanceof InvalidCommand);
 	}
-	
+
 	@Test
 	public void testInvalidBucketFillParameter() {
 		inputText = "B";
