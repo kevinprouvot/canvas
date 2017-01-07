@@ -2,7 +2,7 @@ package com.canvas.controller;
 
 import java.util.Queue;
 
-import com.canvas.command.model.ICommand;
+import com.canvas.command.model.Command;
 import com.canvas.controller.shape.IShape;
 
 /**
@@ -12,7 +12,7 @@ import com.canvas.controller.shape.IShape;
  */
 public class ShapeController {
 
-	public Queue<IShape> queueNewShape(ICommand command) {
+	public Queue<IShape> queueNewShape(Command command) {
 		return null;
 	}
 }

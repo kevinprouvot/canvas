@@ -10,7 +10,7 @@ import com.canvas.command.model.BucketFillCommand;
 import com.canvas.command.model.CreateCanvasCommand;
 import com.canvas.command.model.CreateLineCommand;
 import com.canvas.command.model.CreateRectangleCommand;
-import com.canvas.command.model.ICommand;
+import com.canvas.command.model.Command;
 import com.canvas.command.model.InvalidCommand;
 import com.canvas.command.model.QuitCommand;
 
@@ -18,7 +18,7 @@ public class CommandInterpretorTest {
 
 	private CommandInterpretor commandInterpretor;
 	private String inputText;
-	private ICommand currentComand;
+	private Command currentComand;
 
 	@Before
 	public void setUp() throws Exception {

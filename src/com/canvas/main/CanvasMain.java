@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Queue;
 
 import com.canvas.command.CommandInterpretor;
-import com.canvas.command.model.ICommand;
+import com.canvas.command.model.Command;
 import com.canvas.command.model.QuitCommand;
 import com.canvas.controller.ShapeController;
 import com.canvas.controller.shape.IShape;
@@ -25,7 +25,7 @@ public class CanvasMain {
 		ShapeController shapeController = new ShapeController();
 		DrawingFactory drawingFactory = new DrawingFactory(System.out);
 
-		ICommand command = commandInterpretor.interpret();
+		Command command = commandInterpretor.interpret();
 
 		while (!(command instanceof QuitCommand)) {
 			Queue<IShape> shapes = shapeController.queueNewShape(command);

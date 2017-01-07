@@ -7,7 +7,7 @@ import com.canvas.command.model.BucketFillCommand;
 import com.canvas.command.model.CreateCanvasCommand;
 import com.canvas.command.model.CreateLineCommand;
 import com.canvas.command.model.CreateRectangleCommand;
-import com.canvas.command.model.ICommand;
+import com.canvas.command.model.Command;
 import com.canvas.command.model.InvalidCommand;
 import com.canvas.command.model.QuitCommand;
 
@@ -31,15 +31,15 @@ public class CommandInterpretor {
 		this.input = bufferedReader;
 	}
 
-	public ICommand interpret() {
+	public Command interpret() {
 		// TODO Create a separate class for the reader
 		inputLine = readInput();
 		return interpretCommand();
 	}
 
-	protected ICommand interpretCommand() {
+	protected Command interpretCommand() {
 		String commandLine = prepareCommandLine(inputLine);
-		ICommand command = createICommand(commandLine);
+		Command command = createICommand(commandLine);
 		command = checkCommandValidity(command);
 		return command;
 	}
@@ -57,8 +57,8 @@ public class CommandInterpretor {
 		return inputLine.trim();
 	}
 
-	private ICommand createICommand(String commandLine) {
-		ICommand command;
+	private Command createICommand(String commandLine) {
+		Command command;
 
 		String firstLetter = commandLine.substring(0, 1);
 
@@ -86,7 +86,7 @@ public class CommandInterpretor {
 		return command;
 	}
 
-	private ICommand checkCommandValidity(ICommand command) {
+	private Command checkCommandValidity(Command command) {
 		return null;
 	}
 
