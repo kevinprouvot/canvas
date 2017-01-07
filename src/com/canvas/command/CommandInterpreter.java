@@ -40,7 +40,7 @@ public class CommandInterpreter {
 	protected Command interpretCommand() {
 		String commandLine = prepareCommandLine(inputLine);
 		Command command = createICommand(commandLine);
-		command = checkCommandValidity(command);
+		command = instantiateCommand(command);
 		return command;
 	}
 
@@ -86,7 +86,7 @@ public class CommandInterpreter {
 		return command;
 	}
 
-	private Command checkCommandValidity(Command command) {
+	private Command instantiateCommand(Command command) {
 		if (!command.instantiate()) {
 			command = new InvalidCommand(command.getCommandLine());
 		}
