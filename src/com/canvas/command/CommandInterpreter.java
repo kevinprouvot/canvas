@@ -39,6 +39,8 @@ public class CommandInterpreter {
 	}
 
 	private String prepareCommandLine(String inputLine) {
-		return inputLine.trim();
+		inputLine = inputLine.trim();
+		inputLine = inputLine.replaceAll("\\s+", " ");
+		return inputLine;
 	}
 }
