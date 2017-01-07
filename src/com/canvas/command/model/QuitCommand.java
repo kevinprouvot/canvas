@@ -1,21 +1,8 @@
 package com.canvas.command.model;
 
-import com.canvas.command.CommandUtils;
-
 public class QuitCommand extends Command {
 
 	public QuitCommand(String commandLine) {
-		super(commandLine, 1);
+		super(commandLine);
 	}
-
-	@Override
-	public void instantiate() {
-		
-	}
-	
-	@Override
-	public boolean validate() {
-		return CommandUtils.getInstance().validateSizeAndType(this);
-	}
-
 }

@@ -1,16 +1,22 @@
 package com.canvas.command.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InvalidCommand extends Command {
 	
-	private String message;
+	private List<String> messages;
 
-	public InvalidCommand(String commandLine) {
-		super(commandLine, 0);
-	}
-
-	@Override
-	public void instantiate() {
+	public InvalidCommand(String commandLine, String message) {
+		super(commandLine);
 		
+		this.messages = new ArrayList<>();
+		this.messages.add(message);
+	}
+	
+	public InvalidCommand(String commandLine, List<String> messages) {
+		super(commandLine);
+		this.messages = messages;
 	}
 	
 	@Override
@@ -18,8 +24,8 @@ public class InvalidCommand extends Command {
 		return true;
 	}
 	
-	public String getMessage() {
-		return this.message;
+	public List<String> getMessages() {
+		return this.messages;
 	}
 
 }
