@@ -1,6 +1,7 @@
 package com.canvas.drawing;
 
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Queue;
 
 import com.canvas.controller.shape.IShape;
@@ -21,7 +22,7 @@ public class DrawingFactory {
 
 	}
 	
-	public void displayErrorMessage(String message) {
+	public void displayErrorMessage(List<String> message) {
 		
 	}
 }

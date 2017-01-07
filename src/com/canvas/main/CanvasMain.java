@@ -35,7 +35,7 @@ public class CanvasMain {
 			// If the command is invalid, display error message
 			if (command instanceof InvalidCommand) {
 				InvalidCommand invalidCommand = (InvalidCommand)command;
-				drawingFactory.displayErrorMessage(invalidCommand.getMessage());
+				drawingFactory.displayErrorMessage(invalidCommand.getMessages());
 			}
 			else {
 				Queue<IShape> shapes = shapeController.queueNewShape(command);
