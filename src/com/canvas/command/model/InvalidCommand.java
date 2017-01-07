@@ -19,11 +19,6 @@ public class InvalidCommand extends Command {
 		this.messages = messages;
 	}
 	
-	@Override
-	public boolean validate() {
-		return true;
-	}
-	
 	public List<String> getMessages() {
 		return this.messages;
 	}
