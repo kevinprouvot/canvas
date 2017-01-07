@@ -1,5 +1,7 @@
 package com.canvas.command.model;
 
+import com.canvas.command.CommandUtils;
+
 public class CreateCanvasCommand extends Command {
 
 	public CreateCanvasCommand(String commandLine) {
@@ -13,7 +15,7 @@ public class CreateCanvasCommand extends Command {
 	
 	@Override
 	public boolean validate() {
-		return false;
+		return CommandUtils.getInstance().validationInstructionSize(this);
 	}
 
 }

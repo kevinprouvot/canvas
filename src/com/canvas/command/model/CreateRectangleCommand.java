@@ -1,5 +1,7 @@
 package com.canvas.command.model;
 
+import com.canvas.command.CommandUtils;
+
 public class CreateRectangleCommand extends Command {
 
 	public CreateRectangleCommand(String commandLine) {
@@ -13,7 +15,7 @@ public class CreateRectangleCommand extends Command {
 	
 	@Override
 	public boolean validate() {
-		return false;
+		return CommandUtils.getInstance().validationInstructionSize(this);
 	}
 
 }

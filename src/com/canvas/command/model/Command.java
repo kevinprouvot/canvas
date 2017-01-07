@@ -23,7 +23,11 @@ public class Command {
 	}
 	
 	public String getCommandLine() {
-		return commandLine;
+		return this.commandLine;
+	}
+	
+	public int getInsctructionCount() {
+		return this.instructionCount;
 	}
 
 }
