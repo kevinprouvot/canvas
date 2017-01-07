@@ -2,7 +2,7 @@ package com.canvas.command.model;
 
 public class Command {
 	
-	private String commandLine;
+	protected String commandLine;
 	
 	public Command(String commandLine) {
 		this.commandLine = commandLine;
