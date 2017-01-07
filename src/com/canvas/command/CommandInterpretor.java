@@ -1,6 +1,7 @@
 package com.canvas.command;
 
-import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 import com.canvas.command.model.ICommand;
 
@@ -11,13 +12,28 @@ import com.canvas.command.model.ICommand;
  */
 public class CommandInterpretor {
 
-	private InputStream input;
-	
-	public CommandInterpretor(InputStream inputStream) {
-		this.input = inputStream;
+	private BufferedReader input;
+	private String inputLine;
+
+	public CommandInterpretor(BufferedReader bufferedReader) {
+		this.input = bufferedReader;
 	}
-	
+
 	public ICommand interpret() {
 		return null;
+	}
+
+	private void readInput() {
+		try {
+			inputLine = input.readLine();
+		} catch (IOException e) {
+			// TODO LOGGING ERROR
+		}
+	}
+
+	// TEST METHODS
+	
+	protected void setInputLine(String line) {
+		this.inputLine = line;
 	}
 }
