@@ -34,6 +34,8 @@ public class CreateLineCommand extends Command {
 		return y2;
 	}
 	
-	
+	public static boolean validateVerticalHorizontalLine(CreateLineCommand lineCommand) {
+		return lineCommand.getX1() == lineCommand.getX2() || lineCommand.getY1() == lineCommand.getY2();
+	}
 
 }

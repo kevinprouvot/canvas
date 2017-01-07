@@ -53,6 +53,12 @@ public class CommandFactory {
 			break;
 		case (LINE_COMMAND):
 			command = createShapeCommand(commandLine, LINE_REGEX, CreateLineCommand.class);
+			if (command instanceof CreateLineCommand) {
+				CreateLineCommand lineCommand = (CreateLineCommand) command;
+				if (!CreateLineCommand.validateVerticalHorizontalLine(lineCommand)) {
+					command = new InvalidCommand(commandLine, "Application only support vertical or horizontal lines");
+				}
+			}
 			break;
 		case (RECTANGLE_COMMAND):
 			command = createShapeCommand(commandLine, RECTANGLE_REGEX, CreateRectangleCommand.class);

@@ -183,6 +183,11 @@ public class CommandInterpreterTest {
 		currentCommand = commandInterpreter.interpretCommand(inputText);
 
 		assertTrue("Wrong command created. Text: " + inputText, currentCommand instanceof InvalidCommand);
+		
+		inputText = "L 1 2 3 4";
+		currentCommand = commandInterpreter.interpretCommand(inputText);
+
+		assertTrue("Wrong command created. Text: " + inputText, currentCommand instanceof InvalidCommand);
 	}
 
 	@Test
