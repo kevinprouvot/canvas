@@ -3,9 +3,11 @@ package com.canvas.command.model;
 public class Command {
 	
 	protected String commandLine;
+	protected int instructionCount;
 	
-	public Command(String commandLine) {
+	public Command(String commandLine, int instructionCount) {
 		this.commandLine = commandLine;
+		this.instructionCount = instructionCount;
 	}
 	
 	/**
