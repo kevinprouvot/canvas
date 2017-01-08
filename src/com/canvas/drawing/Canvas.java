@@ -3,6 +3,8 @@ package com.canvas.drawing;
 import java.io.PrintStream;
 
 public class Canvas {
+	private static final char HORIZONTAL_BAR = '-';
+	private static final char VERTICAL_BAR = '|';
 
 	private char[][] canvas;
 	private int weight = 0;
@@ -27,6 +29,28 @@ public class Canvas {
 	}
 	
 	public void draw(PrintStream output) {
+		// Drawing top border
+		for (int x = 0 ; x < weight + 2; x++) {
+			output.print(HORIZONTAL_BAR);
+		}
+		output.println();
 		
+		// Drawing each line
+		for (int y = 0 ; y < this.height ; y++) {
+			output.print(VERTICAL_BAR);
+			
+			for (int x = 0 ; x < this.weight ; x++) {
+				output.print(this.canvas[x][y]);
+			}
+			
+			output.print(VERTICAL_BAR);
+			output.println();
+		}
+		
+		
+		// Drawing bottom border
+		for (int x = 0 ; x < weight + 2; x++) {
+			output.print(HORIZONTAL_BAR);
+		}
 	}
 }
