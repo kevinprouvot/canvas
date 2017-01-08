@@ -41,8 +41,12 @@ public class CreateLineCommand implements Command {
 
 	@Override
 	public void apply(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+		for (int x = x1 ; x <= x2 ; x++) {
+			canvas.setTile(x, y1, Command.DEFAULT_COLOR);
+		}
+		for (int y = y1 ; y <= y2 ; y++) {
+			canvas.setTile(x1, y, Command.DEFAULT_COLOR);
+		}
 	}
 
 }

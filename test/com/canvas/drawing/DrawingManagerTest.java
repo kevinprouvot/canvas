@@ -124,7 +124,7 @@ public class DrawingManagerTest {
 				"----------------------";
 	
 		drawingManager.queueCommand(new CreateCanvasCommand("C 20 4"));
-		
+		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
 		drawingManager.queueCommand(new CreateLineCommand("L 6 3 6 4"));
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
 		drawingManager.queueCommand(new BucketFillCommand("B 10 3 o"));

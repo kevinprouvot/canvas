@@ -47,7 +47,7 @@ public class DrawingManager {
 	}
 
 	private void applyCommand(Command command) {
-		
+		command.apply(this.canvas);
 	}
 
 }
