@@ -139,7 +139,7 @@ public class DrawingManagerTest {
 				"----------------------";
 		
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
-		drawingManager.queueCommand(new BucketFillCommand("B 16 1 x"));
+		drawingManager.queueCommand(new BucketFillCommand("B 15 1 x"));
 		drawingManager.draw();
 		
 		assertTrue("Bucket Fill tool output doesn't match : " + LINE_SEP + output.toString(), expectedResult.equals(output.toString()));
