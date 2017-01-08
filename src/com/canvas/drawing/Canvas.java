@@ -5,6 +5,7 @@ import java.io.PrintStream;
 public class Canvas {
 	private static final char HORIZONTAL_BAR = '-';
 	private static final char VERTICAL_BAR = '|';
+	private static final String LINE_SEPARATOR = System.lineSeparator();
 
 	private char[][] canvas;
 	private int weight = 0;
@@ -33,7 +34,7 @@ public class Canvas {
 		for (int x = 0 ; x < weight + 2; x++) {
 			output.print(HORIZONTAL_BAR);
 		}
-		output.println();
+		output.print(LINE_SEPARATOR);
 		
 		// Drawing each line
 		for (int y = 0 ; y < this.height ; y++) {
@@ -44,7 +45,7 @@ public class Canvas {
 			}
 			
 			output.print(VERTICAL_BAR);
-			output.println();
+			output.print(LINE_SEPARATOR);
 		}
 		
 		
