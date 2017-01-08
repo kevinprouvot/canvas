@@ -17,6 +17,19 @@ public class CreateLineCommand implements Command {
 		this.y1 = Integer.valueOf(instruction[2]);
 		this.x2 = Integer.valueOf(instruction[3]);
 		this.y2 = Integer.valueOf(instruction[4]);
+		
+		// Making sure that x1 is always the top left coordinate and y2 the bottom right
+		if (x1 > x2) {
+			int buffer = x1;
+			x1 = x2;
+			x2 = buffer;
+		}
+		
+		if (y1 > y2) {
+			int buffer = y1;
+			y1 = y2;
+			y2 = buffer;
+		}
 	}
 
 	public int getX1() {
@@ -42,10 +55,10 @@ public class CreateLineCommand implements Command {
 	@Override
 	public void apply(Canvas canvas) {
 		for (int x = x1 ; x <= x2 ; x++) {
-			canvas.setTile(x, y1, Command.DEFAULT_COLOR);
+			canvas.setTile(x, y1, DEFAULT_COLOR);
 		}
 		for (int y = y1 ; y <= y2 ; y++) {
-			canvas.setTile(x1, y, Command.DEFAULT_COLOR);
+			canvas.setTile(x1, y, DEFAULT_COLOR);
 		}
 	}
 
