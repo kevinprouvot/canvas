@@ -64,6 +64,23 @@ public class DrawingManagerTest {
 	}
 	
 	@Test
+	public void testDisplayLineWithInversedX() {
+		
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|xxxxxx              |" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|                    |" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateLineCommand("L 6 2 1 2"));
+		drawingManager.draw();
+		
+		assertTrue("Default canvas output doesn't match : " + LINE_SEP + output.toString(), expectedResult.equals(output.toString()));
+	}
+	
+	@Test
 	public void testDrawOutOfTheCanvas() {
 		String expectedResult = 
 				"----------------------" + LINE_SEP +
@@ -90,6 +107,22 @@ public class DrawingManagerTest {
 				"----------------------";
 		
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
+		drawingManager.draw();
+		
+		assertTrue("Rectangle drawing output doesn't match : " + LINE_SEP + output.toString(), expectedResult.equals(output.toString()));
+	}
+	
+	@Test
+	public void testDisplayRectangleWithInversedCoordinates() {
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|               xxxxx|" + LINE_SEP +
+				"|               x   x|" + LINE_SEP +
+				"|               xxxxx|" + LINE_SEP +
+				"|                    |" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateRectangleCommand("R 20 3 16 1"));
 		drawingManager.draw();
 		
 		assertTrue("Rectangle drawing output doesn't match : " + LINE_SEP + output.toString(), expectedResult.equals(output.toString()));
