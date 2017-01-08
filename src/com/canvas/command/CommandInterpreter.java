@@ -31,7 +31,7 @@ public class CommandInterpreter {
 		try {
 			return input.readLine();
 		} catch (IOException e) {
-			// TODO LOGGING ERROR
+			System.err.println("Problem while reading input" + e);
 			return "";
 		}
 	}

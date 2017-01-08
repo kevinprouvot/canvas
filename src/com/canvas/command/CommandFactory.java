@@ -70,7 +70,7 @@ public class CommandFactory {
 			command = createQuitCommand(commandLine);
 			break;
 		default:
-			command = new InvalidCommand("Invalid First Characater");
+			command = new InvalidCommand("Invalid command");
 			break;
 		}
 
