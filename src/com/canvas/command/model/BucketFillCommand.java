@@ -30,8 +30,20 @@ public class BucketFillCommand implements Command {
 
 	@Override
 	public void apply(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+		char localColor = canvas.getTileColor(this.x, this.y);
+		if (localColor != this.color) {
+			fill_rec(canvas, this.x, this.y, localColor);
+		}
+	}
+	
+	private void fill_rec(Canvas canvas, int xDest, int yDest, char localColor) {
+		if (canvas.isValidCoord(xDest, yDest) && canvas.getTileColor(xDest, yDest) == localColor) {
+			canvas.setTile(xDest, yDest, this.color);
+			fill_rec(canvas, xDest + 1, yDest, localColor);
+			fill_rec(canvas, xDest, yDest + 1, localColor);
+			fill_rec(canvas, xDest - 1, yDest, localColor);
+			fill_rec(canvas, xDest, yDest - 1, localColor);
+		}
 	}
 
 }
