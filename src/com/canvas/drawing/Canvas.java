@@ -28,7 +28,7 @@ public class Canvas {
 	}
 	
 	public void setTile(int x, int y, char color) {
-		if (x >= 1 && x <= this.weight && y >= 1 && y <= this.height) {
+		if (isValidCoord(x, y)) {
 			canvas[x][y] = color;
 		}
 	}
@@ -57,5 +57,9 @@ public class Canvas {
 		for (int x = 0 ; x < weight + 2; x++) {
 			output.print(HORIZONTAL_BAR);
 		}
+	}
+	
+	public boolean isValidCoord(int x, int y) {
+		return x >= 1 && x <= this.weight && y >= 1 && y <= this.height;
 	}
 }
