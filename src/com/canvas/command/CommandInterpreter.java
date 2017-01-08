@@ -6,8 +6,8 @@ import java.io.IOException;
 import com.canvas.command.model.Command;
 
 /**
- * Command interpreter will deduce what command to create depending on the
- * syntax
+ * Command interpreter will deduce which command to create depending on the
+ * syntax provided by the input
  * 
  */
 public class CommandInterpreter {

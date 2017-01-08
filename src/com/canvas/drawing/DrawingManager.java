@@ -7,6 +7,11 @@ import java.util.List;
 import com.canvas.command.model.Command;
 import com.canvas.command.model.CreateCanvasCommand;
 
+/**
+ * Drawing manager is responsible of managing commands and canvas regarding
+ * drawing.
+ * 
+ */
 public class DrawingManager {
 
 	private Canvas canvas;

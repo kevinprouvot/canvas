@@ -9,7 +9,5 @@ public class QuitCommand implements Command {
 
 	@Override
 	public void apply(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
 	}
 }

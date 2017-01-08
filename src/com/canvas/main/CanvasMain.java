@@ -18,10 +18,12 @@ public class CanvasMain {
 
 	public static void main(String[] args) {
 
+		// Setting input
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-		PrintStream output = System.out;
-
 		CommandInterpreter commandInterpreter = new CommandInterpreter(input);
+		
+		//Setting ouput
+		PrintStream output = System.out;
 		DrawingManager drawingManager = new DrawingManager(output);
 
 		// First Command interpretation
@@ -29,14 +31,12 @@ public class CanvasMain {
 
 		// Main loop
 		while (!(command instanceof QuitCommand)) {
-
-			// If the command is invalid, display error message
+			
 			if (command instanceof InvalidCommand) {
 				InvalidCommand invalidCommand = (InvalidCommand) command;
 				drawingManager.displayErrorMessage(invalidCommand.getMessages());
 			} else {
-				drawingManager.queueCommand(command);
-				
+				drawingManager.queueCommand(command);		
 				drawingManager.draw();
 			}
 
