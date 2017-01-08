@@ -35,11 +35,11 @@ public class DrawingManagerTest {
 	public void testDisplaySimpleCanvas() {
 		
 		String expectedResult = 
-		"----" + LINE_SEP +
-		"|  |" + LINE_SEP +
-		"|  |" + LINE_SEP +
-		"|  |" + LINE_SEP +
-		"----";			
+				"----" + LINE_SEP +
+				"|  |" + LINE_SEP +
+				"|  |" + LINE_SEP +
+				"|  |" + LINE_SEP +
+				"----";			
 		
 		drawingManager.queueCommand(new CreateCanvasCommand("C 2 3"));
 		drawingManager.draw();
@@ -47,24 +47,57 @@ public class DrawingManagerTest {
 	}
 	
 	@Test
-	public void test() {;
+	public void testDisplayDefaultCanvas() {
+		
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|xxxxxx              |" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|                    |" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
+		drawingManager.draw();
+		
+		assertTrue("Default canvas doesn't match", expectedResult.equals(output.toString()));
+	}
+	
+	@Test
+	public void testDrawOutOfTheCanvas() {
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP +
+				"|                    |" + LINE_SEP +
+				"|                    |" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateLineCommand("L 1 2 24 2"));
+		drawingManager.draw();
+		
+		assertTrue("out of the canvas drawing doesn't match", expectedResult.equals(output.toString()));
+	}
+	
+	@Test
+	public void testDisplayMainCanvas() {;
 	
 		String expectedResult = 
-			"----------------------" + LINE_SEP +
-			"|oooooooooooooooxxxxx|" + LINE_SEP +
-			"|xxxxxxooooooooox   x|" + LINE_SEP +
-			"|     xoooooooooxxxxx|" + LINE_SEP +
-			"|     xoooooooooooooo|" + LINE_SEP + 
-			"----------------------";		
+				"----------------------" + LINE_SEP +
+				"|oooooooooooooooxxxxx|" + LINE_SEP +
+				"|xxxxxxooooooooox   x|" + LINE_SEP +
+				"|     xoooooooooxxxxx|" + LINE_SEP +
+				"|     xoooooooooooooo|" + LINE_SEP + 
+				"----------------------";
 	
 		drawingManager.queueCommand(new CreateCanvasCommand("C 20 4"));
-		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
+		
 		drawingManager.queueCommand(new CreateLineCommand("L 6 3 6 4"));
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
 		drawingManager.queueCommand(new BucketFillCommand("B 10 3 o"));
 
 		drawingManager.draw();
-		assertTrue("Simple canvas doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Main canvas doesn't match", expectedResult.equals(output.toString()));
 	}
 
 }
