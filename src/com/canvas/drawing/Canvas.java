@@ -23,6 +23,10 @@ public class Canvas {
 		}
 	}
 	
+	public char getTileColor(int x, int y) {
+		return canvas[x][y];
+	}
+	
 	public void setTile(int x, int y, char color) {
 		if (x >= 1 && x <= this.weight && y >= 1 && y <= this.height) {
 			canvas[x][y] = color;
