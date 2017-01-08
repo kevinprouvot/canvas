@@ -58,10 +58,12 @@ public class CommandFactory {
 		return command;
 	}
 	
+	// Canvas Command
 	private Command tryCreateCanvasCommand(String commandLine) {
 		return tryCreateCommand(commandLine, CANVAS_REGEX, CreateCanvasCommand.class);
 	}
 	
+	// Line Command
 	private Command tryCreateLineCommand(String commandLine) {
 		Command command = tryCreateCommand(commandLine, LINE_REGEX, CreateLineCommand.class);
 		if (command instanceof CreateLineCommand) {
@@ -74,10 +76,12 @@ public class CommandFactory {
 		return command;
 	}
 	
+	// Rectangle command
 	private Command tryCreateRectangleCommand(String commandLine) {
 		return tryCreateCommand(commandLine, RECTANGLE_REGEX, CreateRectangleCommand.class);
 	}
 	
+	// Bucket fill command
 	private Command tryCreateBucketFillCommand(String commandLine) {
 		return tryCreateCommand(commandLine, BUCKET_FILL_REGEX, BucketFillCommand.class);
 	}
@@ -104,6 +108,7 @@ public class CommandFactory {
 		}
 	}
 
+	// Quit Command
 	private Command createQuitCommand(String commandLine) {
 		return new QuitCommand();
 	}
