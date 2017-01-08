@@ -1,5 +1,7 @@
 package com.canvas.command.model;
 
+import com.canvas.drawing.Canvas;
+
 public class CreateLineCommand implements Command {
 
 	private int x1;
@@ -38,7 +40,7 @@ public class CreateLineCommand implements Command {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(Canvas canvas) {
 		// TODO Auto-generated method stub
 		
 	}

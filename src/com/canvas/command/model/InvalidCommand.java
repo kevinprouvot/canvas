@@ -3,6 +3,8 @@ package com.canvas.command.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.canvas.drawing.Canvas;
+
 public class InvalidCommand implements Command {
 	
 	private List<String> messages;
@@ -22,7 +24,7 @@ public class InvalidCommand implements Command {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(Canvas canvas) {
 		// TODO Auto-generated method stub
 		
 	}

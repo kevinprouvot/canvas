@@ -1,5 +1,7 @@
 package com.canvas.command.model;
 
+import com.canvas.drawing.Canvas;
+
 public class CreateCanvasCommand implements Command {
 
 	private int weight;
@@ -34,7 +36,7 @@ public class CreateCanvasCommand implements Command {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(Canvas canvas) {
 		// TODO Auto-generated method stub
 		
 	}
