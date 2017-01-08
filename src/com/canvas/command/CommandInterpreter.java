@@ -15,15 +15,17 @@ import com.canvas.command.model.Command;
 public class CommandInterpreter {
 
 	private BufferedReader input;
+	private CommandFactory commandFactory;
 
 	public CommandInterpreter(InputStream inputStream) {
 		this.input = new BufferedReader(new InputStreamReader(inputStream));
+		commandFactory = new CommandFactory();
 	}
 
 	public Command interpret() {
 		String inputLine = readInput();
 		String preparedInputLine = prepareCommandLine(inputLine);
-		Command command = CommandFactory.getInstance().createCommand(preparedInputLine);
+		Command command = commandFactory.createCommand(preparedInputLine);
 		return command;
 	}
 

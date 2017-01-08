@@ -14,19 +14,6 @@ import com.canvas.command.model.QuitCommand;
 
 public class CommandFactory {
 
-	private static CommandFactory instance;
-
-	public static CommandFactory getInstance() {
-		if (instance == null) {
-			instance = new CommandFactory();
-		}
-
-		return instance;
-	}
-
-	private CommandFactory() {
-	}
-
 	protected static final String CANVAS_COMMAND = "C";
 	protected static final String CANVAS_REGEX = "^C \\d+ \\d+$";
 
@@ -49,22 +36,16 @@ public class CommandFactory {
 
 		switch (firstLetter) {
 		case (CANVAS_COMMAND):
-			command = createShapeCommand(commandLine, CANVAS_REGEX, CreateCanvasCommand.class);
+			command = tryCreateCanvasCommand(commandLine);
 			break;
 		case (LINE_COMMAND):
-			command = createShapeCommand(commandLine, LINE_REGEX, CreateLineCommand.class);
-			if (command instanceof CreateLineCommand) {
-				CreateLineCommand lineCommand = (CreateLineCommand) command;
-				if (!CreateLineCommand.validateVerticalHorizontalLine(lineCommand)) {
-					command = new InvalidCommand("Application only support vertical or horizontal lines");
-				}
-			}
+			command = tryCreateLineCommand(commandLine);
 			break;
 		case (RECTANGLE_COMMAND):
-			command = createShapeCommand(commandLine, RECTANGLE_REGEX, CreateRectangleCommand.class);
+			command = tryCreateRectangleCommand(commandLine);
 			break;
 		case (BUCKET_FILL_COMMAND):
-			command = createShapeCommand(commandLine, BUCKET_FILL_REGEX, BucketFillCommand.class);
+			command = tryCreateBucketFillCommand(commandLine);
 			break;
 		case (QUIT_COMMAND):
 			command = createQuitCommand(commandLine);
@@ -76,21 +57,51 @@ public class CommandFactory {
 
 		return command;
 	}
-
-	private Command createShapeCommand(String commandLine, String pattern, Class<? extends Command> shapeClass) {
+	
+	private Command tryCreateCanvasCommand(String commandLine) {
+		return tryCreateCommand(commandLine, CANVAS_REGEX, CreateCanvasCommand.class);
+	}
+	
+	private Command tryCreateLineCommand(String commandLine) {
+		Command command = tryCreateCommand(commandLine, LINE_REGEX, CreateLineCommand.class);
+		if (command instanceof CreateLineCommand) {
+			CreateLineCommand lineCommand = (CreateLineCommand) command;
+			if (!CreateLineCommand.validateVerticalHorizontalLine(lineCommand)) {
+				command = new InvalidCommand("Application only support vertical or horizontal lines");
+			}
+		}
+		
+		return command;
+	}
+	
+	private Command tryCreateRectangleCommand(String commandLine) {
+		return tryCreateCommand(commandLine, RECTANGLE_REGEX, CreateRectangleCommand.class);
+	}
+	
+	private Command tryCreateBucketFillCommand(String commandLine) {
+		return tryCreateCommand(commandLine, BUCKET_FILL_REGEX, BucketFillCommand.class);
+	}
+	
+	
+	private Command tryCreateCommand(String commandLine, String pattern, Class<? extends Command> commandClass) {
 		Pattern p = Pattern.compile(pattern);
 		Matcher m = p.matcher(commandLine);
 		if (m.matches()) {
-			try {
-				return shapeClass.getConstructor(String.class).newInstance(commandLine);
-			} catch (IllegalAccessException | NoSuchMethodException | InstantiationException
-					| InvocationTargetException e) {
-				return new InvalidCommand("Unexpected error");
-			}
+			return createCommand(commandLine, commandClass);
 		} else {
 			return new InvalidCommand("Invalid Pararmeters");
 		}
-
+	}
+	
+	// Generic command constructor
+	private Command createCommand(String commandLine, Class<? extends Command> commandClass) {
+		try {
+			return commandClass.getConstructor(String.class).newInstance(commandLine);
+		} catch (IllegalAccessException | NoSuchMethodException | InstantiationException
+				| InvocationTargetException e) {
+			System.err.println("Error while Constructing Command " + e);
+			return new InvalidCommand("Unexpected error");
+		}
 	}
 
 	private Command createQuitCommand(String commandLine) {
