@@ -60,6 +60,7 @@ public class Canvas {
 		for (int x = 0; x < weight + 2; x++) {
 			output.print(HORIZONTAL_BAR);
 		}
+		output.print(LINE_SEPARATOR);
 	}
 
 	public boolean isValidCoord(int x, int y) {

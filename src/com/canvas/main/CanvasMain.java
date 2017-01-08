@@ -26,6 +26,7 @@ public class CanvasMain {
 		DrawingManager drawingManager = new DrawingManager(output);
 
 		// First Command interpretation
+		drawingManager.displayEnterCommand();
 		Command command = commandInterpreter.interpret();
 
 		// Main loop
@@ -40,6 +41,7 @@ public class CanvasMain {
 			}
 
 			// Interpret next command
+			drawingManager.displayEnterCommand();
 			command = commandInterpreter.interpret();
 		}
 

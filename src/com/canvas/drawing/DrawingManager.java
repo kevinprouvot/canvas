@@ -24,6 +24,10 @@ public class DrawingManager {
 		this.canvas = new Canvas(20, 4);
 		this.output = output;
 	}
+	
+	public void displayEnterCommand() {
+		output.print("enter command: ");
+	}
 
 	public void displayErrorMessage(List<String> errorMessages) {
 		for (String errorMessage : errorMessages) {

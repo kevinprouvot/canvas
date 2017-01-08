@@ -39,7 +39,7 @@ public class DrawingManagerTest {
 				"|  |" + LINE_SEP +
 				"|  |" + LINE_SEP +
 				"|  |" + LINE_SEP +
-				"----";			
+				"----" + LINE_SEP;			
 		
 		drawingManager.queueCommand(new CreateCanvasCommand("C 2 3"));
 		drawingManager.draw();
@@ -55,7 +55,7 @@ public class DrawingManagerTest {
 				"|xxxxxx              |" + LINE_SEP +
 				"|                    |" + LINE_SEP +
 				"|                    |" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
 		drawingManager.draw();
@@ -72,7 +72,7 @@ public class DrawingManagerTest {
 				"|xxxxxx              |" + LINE_SEP +
 				"|                    |" + LINE_SEP +
 				"|                    |" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateLineCommand("L 6 2 1 2"));
 		drawingManager.draw();
@@ -88,7 +88,7 @@ public class DrawingManagerTest {
 				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP +
 				"|                    |" + LINE_SEP +
 				"|                    |" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateLineCommand("L 1 2 24 2"));
 		drawingManager.draw();
@@ -104,7 +104,7 @@ public class DrawingManagerTest {
 				"|               x   x|" + LINE_SEP +
 				"|               xxxxx|" + LINE_SEP +
 				"|                    |" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
 		drawingManager.draw();
@@ -120,7 +120,7 @@ public class DrawingManagerTest {
 				"|               x   x|" + LINE_SEP +
 				"|               xxxxx|" + LINE_SEP +
 				"|                    |" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateRectangleCommand("R 20 3 16 1"));
 		drawingManager.draw();
@@ -136,7 +136,7 @@ public class DrawingManagerTest {
 				"|xxxxxxxxxxxxxxxx   x|" + LINE_SEP +
 				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP +
 				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 		
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
 		drawingManager.queueCommand(new BucketFillCommand("B 15 1 x"));
@@ -154,7 +154,7 @@ public class DrawingManagerTest {
 				"|xxxxxxooooooooox   x|" + LINE_SEP +
 				"|     xoooooooooxxxxx|" + LINE_SEP +
 				"|     xoooooooooooooo|" + LINE_SEP + 
-				"----------------------";
+				"----------------------" + LINE_SEP;
 	
 		drawingManager.queueCommand(new CreateCanvasCommand("C 20 4"));
 		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
