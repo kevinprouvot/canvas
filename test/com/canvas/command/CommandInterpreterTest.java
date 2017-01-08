@@ -39,24 +39,24 @@ public class CommandInterpreterTest {
 		assertTrue("Wrong command created. Text: " + inputText, currentCommand instanceof CreateCanvasCommand);
 
 		CreateCanvasCommand createCanvasCommand = (CreateCanvasCommand)currentCommand;
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getW() == 4);
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getH() == 5);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getWeight() == 4);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getHeight() == 5);
 		
 		inputText = " C 4   5";
 		currentCommand = commandInterpreter.interpretCommand(inputText);
 		assertTrue("Wrong command created. Text: " + inputText, currentCommand instanceof CreateCanvasCommand);
 		
 		createCanvasCommand = (CreateCanvasCommand)currentCommand;
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getW() == 4);
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getH() == 5);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getWeight() == 4);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getHeight() == 5);
 		
 		inputText = "C 12 5";
 		currentCommand = commandInterpreter.interpretCommand(inputText);
 		assertTrue("Wrong command created. Text: " + inputText, currentCommand instanceof CreateCanvasCommand);
 		
 		createCanvasCommand = (CreateCanvasCommand)currentCommand;
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getW() == 12);
-		assertTrue("wrongly created Canvas command", createCanvasCommand.getH() == 5);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getWeight() == 12);
+		assertTrue("wrongly created Canvas command", createCanvasCommand.getHeight() == 5);
 	}
 
 	@Test

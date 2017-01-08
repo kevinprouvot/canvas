@@ -2,23 +2,35 @@ package com.canvas.command.model;
 
 public class CreateCanvasCommand implements Command {
 
-	private int w;
-	private int h;
+	private int weight;
+	private int height;
 
 	public CreateCanvasCommand(String commandLine) {
 
 		String[] instruction = commandLine.split(" ");
 
-		this.w = Integer.valueOf(instruction[1]);
-		this.h = Integer.valueOf(instruction[2]);
+		this.weight = Integer.valueOf(instruction[1]);
+		this.height = Integer.valueOf(instruction[2]);
 	}
-
-	public int getW() {
-		return w;
+	
+	public int getWeight() {
+		return weight;
 	}
-
-	public int getH() {
-		return h;
+	
+	public int getHeight() {
+		return height;
 	}
-
+	
+	public char[][] buildCanvas() {
+		char[][] canvas = new char[this.weight][this.height];
+		
+		for (int x = 0 ; x < this.weight ; x++) {
+			for (int y = 0 ; y < this.height ; y ++) {
+				canvas[x][y] = ' ';
+			}
+		}
+		
+		return canvas;
+	}
+	
 }
