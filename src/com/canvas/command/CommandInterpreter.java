@@ -22,10 +22,6 @@ public class CommandInterpreter {
 
 	public Command interpret() {
 		String inputLine = readInput();
-		return interpretCommand(inputLine);
-	}
-
-	private Command interpretCommand(String inputLine) {
 		String preparedInputLine = prepareCommandLine(inputLine);
 		Command command = CommandFactory.getInstance().createCommand(preparedInputLine);
 		return command;

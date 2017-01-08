@@ -2,10 +2,7 @@ package com.canvas.command;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.junit.After;
 import org.junit.Before;
