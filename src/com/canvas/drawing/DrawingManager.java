@@ -9,14 +9,14 @@ import com.canvas.command.model.CreateCanvasCommand;
 
 public class DrawingManager {
 
-	private char[][] canvas;
+	private Canvas canvas;
 	private List<Command> commands;
 	private PrintStream output;
 
 	public DrawingManager(PrintStream output) {
 		this.commands = new ArrayList<>();
 		// Default canvas is 20x4
-		this.canvas = new char[20][4];
+		this.canvas = new Canvas(20, 4);
 		this.output = output;
 	}
 
@@ -37,7 +37,7 @@ public class DrawingManager {
 	}
 
 	public void draw() {
-
+		this.canvas.draw(output);
 	}
 
 	private void resetCanvas(CreateCanvasCommand createCanvasCommand) {

@@ -23,16 +23,8 @@ public class CreateCanvasCommand implements Command {
 		return height;
 	}
 	
-	public char[][] buildCanvas() {
-		char[][] canvas = new char[this.weight][this.height];
-		
-		for (int x = 0 ; x < this.weight ; x++) {
-			for (int y = 0 ; y < this.height ; y ++) {
-				canvas[x][y] = ' ';
-			}
-		}
-		
-		return canvas;
+	public Canvas buildCanvas() {
+		return new Canvas(this.weight, this.height);
 	}
 
 	@Override

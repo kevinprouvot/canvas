@@ -36,7 +36,7 @@ public class CanvasMain {
 				drawingManager.displayErrorMessage(invalidCommand.getMessages());
 			} else {
 				drawingManager.queueCommand(command);
-
+				
 				drawingManager.draw();
 			}
 
