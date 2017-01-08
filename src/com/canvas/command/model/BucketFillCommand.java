@@ -26,4 +26,10 @@ public class BucketFillCommand implements Command {
 		return color;
 	}
 
+	@Override
+	public void apply() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

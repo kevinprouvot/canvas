@@ -33,4 +33,10 @@ public class CreateRectangleCommand implements Command {
 		return y2;
 	}
 
+	@Override
+	public void apply() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

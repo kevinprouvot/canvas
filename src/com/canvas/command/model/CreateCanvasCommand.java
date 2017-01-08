@@ -32,5 +32,11 @@ public class CreateCanvasCommand implements Command {
 		
 		return canvas;
 	}
+
+	@Override
+	public void apply() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

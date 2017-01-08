@@ -37,4 +37,10 @@ public class CreateLineCommand implements Command {
 		return lineCommand.getX1() == lineCommand.getX2() || lineCommand.getY1() == lineCommand.getY2();
 	}
 
+	@Override
+	public void apply() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -21,4 +21,10 @@ public class InvalidCommand implements Command {
 		return this.messages;
 	}
 
+	@Override
+	public void apply() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
