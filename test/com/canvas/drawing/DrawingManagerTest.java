@@ -43,7 +43,7 @@ public class DrawingManagerTest {
 		
 		drawingManager.queueCommand(new CreateCanvasCommand("C 2 3"));
 		drawingManager.draw();
-		assertTrue("Simple canvas doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Simple canvas output doesn't match", expectedResult.equals(output.toString()));
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class DrawingManagerTest {
 		drawingManager.queueCommand(new CreateLineCommand("L 1 2 6 2"));
 		drawingManager.draw();
 		
-		assertTrue("Default canvas doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Default canvas output doesn't match", expectedResult.equals(output.toString()));
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class DrawingManagerTest {
 		drawingManager.queueCommand(new CreateLineCommand("L 1 2 24 2"));
 		drawingManager.draw();
 		
-		assertTrue("out of the canvas drawing doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("out of the canvas drawing output doesn't match", expectedResult.equals(output.toString()));
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class DrawingManagerTest {
 		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
 		drawingManager.draw();
 		
-		assertTrue("Rectangle drawing doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Rectangle drawing output doesn't match", expectedResult.equals(output.toString()));
 	}
 	
 	@Test
@@ -109,7 +109,7 @@ public class DrawingManagerTest {
 		drawingManager.queueCommand(new BucketFillCommand("B 16 1 x"));
 		drawingManager.draw();
 		
-		assertTrue("Bucket Fill tool doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Bucket Fill tool output doesn't match", expectedResult.equals(output.toString()));
 	}
 	
 	@Test
@@ -130,7 +130,7 @@ public class DrawingManagerTest {
 		drawingManager.queueCommand(new BucketFillCommand("B 10 3 o"));
 
 		drawingManager.draw();
-		assertTrue("Main canvas doesn't match", expectedResult.equals(output.toString()));
+		assertTrue("Main canvas output doesn't match", expectedResult.equals(output.toString()));
 	}
 
 }
