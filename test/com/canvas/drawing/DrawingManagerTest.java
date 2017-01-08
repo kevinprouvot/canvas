@@ -80,6 +80,39 @@ public class DrawingManagerTest {
 	}
 	
 	@Test
+	public void testDisplayRectangle() {
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|               xxxxx|" + LINE_SEP +
+				"|               x   x|" + LINE_SEP +
+				"|               xxxxx|" + LINE_SEP +
+				"|                    |" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
+		drawingManager.draw();
+		
+		assertTrue("Rectangle drawing doesn't match", expectedResult.equals(output.toString()));
+	}
+	
+	@Test
+	public void testDisplayBucketFill() {
+		String expectedResult = 
+				"----------------------" + LINE_SEP +
+				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP +
+				"|xxxxxxxxxxxxxxxx   x|" + LINE_SEP +
+				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP +
+				"|xxxxxxxxxxxxxxxxxxxx|" + LINE_SEP + 
+				"----------------------";
+		
+		drawingManager.queueCommand(new CreateRectangleCommand("R 16 1 20 3"));
+		drawingManager.queueCommand(new BucketFillCommand("B 16 1 x"));
+		drawingManager.draw();
+		
+		assertTrue("Bucket Fill tool doesn't match", expectedResult.equals(output.toString()));
+	}
+	
+	@Test
 	public void testDisplayMainCanvas() {;
 	
 		String expectedResult = 
