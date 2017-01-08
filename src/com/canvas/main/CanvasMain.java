@@ -1,7 +1,6 @@
 package com.canvas.main;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import com.canvas.command.CommandInterpreter;
@@ -19,7 +18,7 @@ public class CanvasMain {
 	public static void main(String[] args) {
 
 		// Setting input
-		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		InputStream input = System.in;
 		CommandInterpreter commandInterpreter = new CommandInterpreter(input);
 		
 		//Setting ouput

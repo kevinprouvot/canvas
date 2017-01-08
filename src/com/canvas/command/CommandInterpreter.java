@@ -2,6 +2,8 @@ package com.canvas.command;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import com.canvas.command.model.Command;
 
@@ -14,8 +16,8 @@ public class CommandInterpreter {
 
 	private BufferedReader input;
 
-	public CommandInterpreter(BufferedReader bufferedReader) {
-		this.input = bufferedReader;
+	public CommandInterpreter(InputStream inputStream) {
+		this.input = new BufferedReader(new InputStreamReader(inputStream));
 	}
 
 	public Command interpret() {
@@ -23,7 +25,7 @@ public class CommandInterpreter {
 		return interpretCommand(inputLine);
 	}
 
-	protected Command interpretCommand(String inputLine) {
+	private Command interpretCommand(String inputLine) {
 		String preparedInputLine = prepareCommandLine(inputLine);
 		Command command = CommandFactory.getInstance().createCommand(preparedInputLine);
 		return command;
