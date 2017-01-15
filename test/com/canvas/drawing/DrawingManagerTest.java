@@ -146,7 +146,7 @@ public class DrawingManagerTest {
 	}
 	
 	@Test
-	public void testDisplayMainCanvas() {;
+	public void testDisplayMainCanvas() {
 	
 		String expectedResult = 
 				"----------------------" + LINE_SEP +
@@ -164,6 +164,16 @@ public class DrawingManagerTest {
 
 		drawingManager.draw();
 		assertTrue("Main canvas output doesn't match : " + LINE_SEP + output.toString(), expectedResult.equals(output.toString()));
+	}
+	
+	@Test
+	public void testCreateBucketCommandOutsideBounds() {
+		
+		// Shouldn't throw exception
+		drawingManager.queueCommand(new CreateCanvasCommand("C 4 4"));
+		drawingManager.queueCommand(new CreateLineCommand("L 5 6 5 10"));
+		drawingManager.queueCommand(new CreateRectangleCommand("R 1 1 25 4"));
+		drawingManager.queueCommand(new BucketFillCommand("B 10 5 o"));
 	}
 
 }
