@@ -28,7 +28,11 @@ public class Canvas {
 	}
 
 	public char getTileColor(int x, int y) {
-		return canvas[x][y];
+		if (isValidCoord(x, y)) {
+			return canvas[x][y];
+		}
+		// TODO Create custom checked Exception
+		return ' ';
 	}
 
 	public void setTile(int x, int y, char color) {
